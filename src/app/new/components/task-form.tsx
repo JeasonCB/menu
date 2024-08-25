@@ -9,7 +9,7 @@ import { redirect } from "next/navigation"
 
 export function Taskform() {
 
-    async function createTask(formData) {
+    async function createTask(formData: FormData) {
         "use server"
         const Name = formData.get("Name")?.toString()
         const Description = formData.get("Description")?.toString()
