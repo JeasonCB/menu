@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import prisma from "@/lib/prisma"
+import {prisma} from "@/lib/prisma"
 //import Image from "next/image";
 
 export default async function Home() {
