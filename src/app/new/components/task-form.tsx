@@ -40,7 +40,7 @@ export function Taskform() {
         }
 
         type ProductCreateInputLocal = {
-            id?: string;
+            id: string;
             Name: string;
             Description: string;
             Image: string;
