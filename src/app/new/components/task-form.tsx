@@ -26,20 +26,21 @@ export function Taskform() {
 
     async function createTask(formData: FormData) {
         "use server"
-        const Name = formData.get("Name")
-        const Description = formData.get("Description")
-        const Image = formData.get("Image")
+        const Name = formData.get("Name")?.toString()
+        const Description = formData.get("Description")?.toString()
+        const Image = formData.get("Image")?.toString()
         const Price = formData.get("Price")
 
         const priceNumber = parseFloat(Price?.toString() ?? "0") || 0;
 
         // console.log(Name, Description, Image, Price)
 
-        if (!Name || !Description || !Image || isNaN(priceNumber)) {
+        if (!Name || !Description || !Image || priceNumber) {
             return
         }
 
         // type ProductCreateInputLocal = {
+        //     id : number
         //     Name: string;
         //     Description: string;
         //     Image: string;
@@ -48,13 +49,12 @@ export function Taskform() {
 
         const newTask = await prisma.product.create({
             data: {
-                Name: Name as string,
-                Description: Description as string,
-                Image: Image as string,
-                Price: priceNumber, // Asegúrate de que Price no sea null y conviértelo a número
+                Name: Name,
+                Description: Description,
+                Image: Image,
+                Price: priceNumber// Asegúrate de que Price no sea null y conviértelo a número
             }
         });
-        console.log(newTask)
     }
 
     return (
@@ -83,7 +83,7 @@ export function Taskform() {
 
                         <div className="flex flex-col space-y-1.5">
                             <Label htmlFor="Price">Precio</Label>
-                            <Input name="Price" id="Price" placeholder="Precio del producto" />
+                            <Input name="Price" id="Price" type="number" placeholder="Precio del producto" />
                         </div>
 
                     </div>
