@@ -31,7 +31,7 @@ export function Taskform() {
         const Image = formData.get("Image")
         const Price = formData.get("Price")
 
-        const priceNumber = Price ? parseFloat(Price.toString()) : NaN;
+        const priceNumber = parseFloat(Price?.toString() ?? "0") || 0;
 
         // console.log(Name, Description, Image, Price)
 
@@ -39,14 +39,22 @@ export function Taskform() {
             return
         }
 
+        type ProductCreateInputLocal = {
+            id?: string;
+            Name: string;
+            Description: string;
+            Image: string;
+            Price: number;
+        };
+
         const newTask = await prisma.product.create({
             data: {
                 Name: Name as string,
                 Description: Description as string,
                 Image: Image as string,
-                Price: priceNumber
-            },
-        })
+                Price: priceNumber, // Asegúrate de que Price no sea null y conviértelo a número
+            } as ProductCreateInputLocal,
+        });
         console.log(newTask)
     }
 
