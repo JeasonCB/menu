@@ -31,11 +31,11 @@ export function Taskform() {
         const Image = formData.get("Image")?.toString()
         // const Price = formData.get("Price")
 
-        const Price = parseFloat(formData.get("Price")?.toString() ?? "0") || 0;
+        //const Price = parseFloat(formData.get("Price")?.toString() ?? "0") || 0;
 
         // console.log(Name, Description, Image, Price)
 
-        if (!Name || !Description || !Image || isNaN(Price)) {
+        if (!Name || !Description || !Image ) {
             return
         }
 
@@ -52,7 +52,7 @@ export function Taskform() {
                 Name: Name,
                 Description: Description,
                 Image: Image,
-                Price: Price// Asegúrate de que Price no sea null y conviértelo a número
+                // Price: Price// Asegúrate de que Price no sea null y conviértelo a número
             }
         });
         
