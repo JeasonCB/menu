@@ -5,8 +5,7 @@ import prisma from "@/lib/prisma"
 export default async function Home() {
 
   const ListaProductos = await prisma.product.findMany()
-  console.log(ListaProductos)
-
+  
   return (
     <>
       {/* <div>
