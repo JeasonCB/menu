@@ -10,15 +10,15 @@ export default async function Home() {
   return (
     <>
       <div>
-        {ListaProductos.map(ListaProductos => (
-          <Card key={ListaProductos.id}>
+        {ListaProductos.map((producto: any) => (
+          <Card key={producto.id}>
             <CardHeader>
-              {ListaProductos.Name} id: {ListaProductos.id}
+              {producto.Name} id: {producto.id}
             </CardHeader>
             <CardContent>
               <p>
-                {ListaProductos.Description}
-                <br /> <br />{ListaProductos.Price}$
+                {producto.Description}
+                <br /> <br />{producto.Price}$
               </p>
             </CardContent>
           </Card>
