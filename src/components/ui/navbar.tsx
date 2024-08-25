@@ -5,7 +5,7 @@ import { buttonVariants } from "./button";
 function Navbar() {
     return (
         <nav className="flex justify-between">
-            <h1>crud actions</h1>
+            <Link href="/"> Crud Actions</Link>
 
             <div className="flex gap-x-2 items-center">
                 <Link href="/new" className={buttonVariants({variant: "secondary"})}>

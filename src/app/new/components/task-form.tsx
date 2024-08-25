@@ -1,62 +1,51 @@
 import { Button } from "@/components/ui/button"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 
+import prisma from "@/lib/prisma"
+import { redirect } from "next/navigation"
 
 export function Taskform() {
 
-    // async function createTask(formData: FormData) {
-    //     "use server"
-    //     const Name = formData.get("Name")?.toString()
-    //     const Description = formData.get("Description")?.toString()
-    //     const Image = formData.get("Image")?.toString()
-    //     // const Price = formData.get("Price")
+    async function createTask(formData: FormData) {
+        "use server"
+        const Name = formData.get("Name")?.toString()
+        const Description = formData.get("Description")?.toString()
+        const Image = formData.get("Image")?.toString()
+        const Price = formData.get("Price")?.toString()
 
-    //     //const Price = parseFloat(formData.get("Price")?.toString() ?? "0") || 0;
+        //const Price = parseFloat(formData.get("Price")?.toString() ?? "0") || 0;
 
-    //     // console.log(Name, Description, Image, Price)
+        //console.log(Name, Description, Image, Price)
 
-    //     if (!Name || !Description || !Image ) {
-    //         return
-    //     }
+        if (!Name || !Description || !Image || !Price) {
+            return
+        }
 
-    //     // type ProductCreateInputLocal = {
-    //     //     id : number 
-    //     //     Name: string;
-    //     //     Description: string;
-    //     //     Image: string;
-    //     //     Price: number;
-    //     // };
+        // type ProductCreateInputLocal = {
+        //     id : number 
+        //     Name: string;
+        //     Description: string;
+        //     Image: string;
+        //     Price: number;
+        // };
 
-    //     const newTask = await prisma.product.create({
-    //         data: {
-    //             Name: Name,
-    //             Description: Description,
-    //             Image: Image,
-    //             // Price: Price// Asegúrate de que Price no sea null y conviértelo a número
-    //         }
-    //     });
-        
-    // }
+        const newTask = await prisma.product.create({
+            data: {
+                Name: Name,
+                Description: Description,
+                Image: Image,
+                Price: Price // Asegúrate de que Price no sea null y conviértelo a número
+            }
+        });
+        console.log(newTask)
+        redirect('/')
+    }
 
     return (
-        <form >
+        <form action={createTask}>
             <Card className="w-[350px]">
                 <CardHeader>
                     <CardTitle>Agregar producto</CardTitle>
