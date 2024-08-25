@@ -29,18 +29,18 @@ export function Taskform() {
         const Name = formData.get("Name")?.toString()
         const Description = formData.get("Description")?.toString()
         const Image = formData.get("Image")?.toString()
-        const Price = formData.get("Price")
+        // const Price = formData.get("Price")
 
-        const priceNumber = parseFloat(Price?.toString() ?? "0") || 0;
+        const Price = parseFloat(formData.get("Price")?.toString() ?? "0") || 0;
 
         // console.log(Name, Description, Image, Price)
 
-        if (!Name || !Description || !Image || priceNumber) {
+        if (!Name || !Description || !Image || Price) {
             return
         }
 
         // type ProductCreateInputLocal = {
-        //     id : number
+        //     id : number 
         //     Name: string;
         //     Description: string;
         //     Image: string;
@@ -52,7 +52,7 @@ export function Taskform() {
                 Name: Name,
                 Description: Description,
                 Image: Image,
-                Price: priceNumber// Asegúrate de que Price no sea null y conviértelo a número
+                Price: Price// Asegúrate de que Price no sea null y conviértelo a número
             }
         });
     }
