@@ -35,7 +35,7 @@ export function Taskform() {
 
         // console.log(Name, Description, Image, Price)
 
-        if (!Name || !Description || !Image || Price) {
+        if (!Name || !Description || !Image || isNaN(Price)) {
             return
         }
 
