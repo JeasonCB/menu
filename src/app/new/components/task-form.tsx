@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 
-import prisma from "@/lib/prisma"
 
 export function Taskform() {
 
