@@ -1,9 +1,28 @@
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import prisma from "@/lib/prisma"
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+
+  const ListaProductos = await prisma.product.findMany()
+  console.log(ListaProductos)
+
   return (
     <>
-      home page
-    </> 
+      <div>
+        {ListaProductos.map(ListaProductos => (
+          <Card key={ListaProductos.id}>
+            <CardHeader>
+              {ListaProductos.Name}
+            </CardHeader>
+            <CardContent>
+              <p>
+                {ListaProductos.Description}
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </>
   );
 }
