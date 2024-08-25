@@ -1,4 +1,4 @@
 {
-  "parser": "babel-eslint",
+  "parser": "eslint-config-next",
   "extends": "next/core-web-vitals"
 }
