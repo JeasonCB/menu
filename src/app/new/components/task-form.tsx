@@ -39,13 +39,12 @@ export function Taskform() {
             return
         }
 
-        type ProductCreateInputLocal = {
-            id: string;
-            Name: string;
-            Description: string;
-            Image: string;
-            Price: number;
-        };
+        // type ProductCreateInputLocal = {
+        //     Name: string;
+        //     Description: string;
+        //     Image: string;
+        //     Price: number;
+        // };
 
         const newTask = await prisma.product.create({
             data: {
@@ -53,7 +52,7 @@ export function Taskform() {
                 Description: Description as string,
                 Image: Image as string,
                 Price: priceNumber, // Asegúrate de que Price no sea null y conviértelo a número
-            } as ProductCreateInputLocal,
+            }
         });
         console.log(newTask)
     }
