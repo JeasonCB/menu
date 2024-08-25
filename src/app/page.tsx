@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <>
-      <div>
+      {/* <div>
         {ListaProductos.map(ListaProductos => (
           <Card key={ListaProductos.id}>
             <CardHeader>
@@ -22,7 +22,7 @@ export default async function Home() {
             </CardContent>
           </Card>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }

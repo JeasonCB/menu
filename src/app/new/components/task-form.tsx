@@ -55,6 +55,7 @@ export function Taskform() {
                 Price: Price// Asegúrate de que Price no sea null y conviértelo a número
             }
         });
+        
     }
 
     return (
